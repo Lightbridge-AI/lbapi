@@ -1,0 +1,18 @@
+Package: lbapi
+Title: API wrapper
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kittipos",
+           family = "Sirivongrungson",
+           role = c("aut", "cre"),
+           email = "ki11ip0.s.a.s@gmail.com")
+Description: My API wrapper packages including google drive, google sheets and much more.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    googledrive,
+    googlesheets4,
+    magrittr
