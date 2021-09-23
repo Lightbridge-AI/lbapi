@@ -2,4 +2,6 @@
 
 export("%>%")
 export(gs4_create_at)
+export(read_sheet_all)
 importFrom(magrittr,"%>%")
+importFrom(stringr,str_subset)

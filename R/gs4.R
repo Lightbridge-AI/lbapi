@@ -28,3 +28,42 @@ gs4_create_at <- function(path = NULL,
 
   ss
 }
+
+
+# Read all Sheets from a SpreadSheet --------------------------------------
+
+
+#' Read All Sheets from a Spread Sheet
+#'
+#' A wrapper around `googlesheets4::read_sheet()` to read all sheets from a spread sheet.
+#' Output will be a list of data.frame with names corresponding to Google sheets (tabs) names.
+#'
+#' @param ss Something that identifies a Google Sheet
+#' @param sheets_regex If `NULL` read all sheets; otherwise, specify regex to subset sheets
+#' @param ... passed to `googlesheets4::read_sheet`
+#'
+#' @return A Tibble
+#' @export
+#'
+read_sheet_all <- function(ss,
+                           sheets_regex = NULL, # NULL: All sheets
+                           ...
+) {
+
+  sheet_nms <- googlesheets4::sheet_names(ss)
+
+  if(!is.null(sheets_regex)){
+    sheet_nms <- stringr::str_subset(sheet_nms, sheets_regex)
+  }
+
+  names(sheet_nms) <- sheet_nms
+
+  purrr::map(
+    sheet_nms,
+    ~ googlesheets4::read_sheet(ss,
+                                sheet = .x,
+                                ...
+    )
+  )
+
+}
