@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 my_dev
+^my_data$
